@@ -37,7 +37,7 @@ export const Login = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then((res) => {
-                navigate("/");
+                navigate(ROUTES.HOME);
             })
             .catch((error) => {
                 console.log('error');
@@ -55,7 +55,12 @@ export const Login = () => {
                 navigate(location?.state ? location.state : ROUTES.HOME);
             })
             .catch((error) => {
-                console.log(error);
+                if (error.code === "auth/account-exists-with-different-credential") {
+                    setSerror("An account with this email already exists. Please log in with the previously used provider.");
+                } else {
+                    console.error("Registration error:", error);
+                    setSerror(error.message);  // Set the error message for other cases
+                }
             });
     };
 

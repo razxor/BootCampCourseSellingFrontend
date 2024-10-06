@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             //     element: <Faq />,
             // },
             {
-                path: `${ROUTES.SINGLE_BOOK.STATIC}`,
+                path: `${ROUTES.SINGLE_COURSE.STATIC}`,
                 element: <CourseDetails />,
             },
             {

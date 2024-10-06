@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import ROUTES from '../../routes';
 
 const SingleCourse = (props) => {    
-    const {course} = props;        
+    const {course} = props;      
     return (
 
-        // <Link to={ROUTES.SINGLE_BOOK.DYNAMIC(course.course_id)}>
-        <Link>
+        <Link to={ROUTES.SINGLE_COURSE.DYNAMIC(course.course_id)}>        
             <div className="card bg-base-100 shadow-xl w-full rounded h-96">
                 <figure>
                     <img
@@ -43,8 +42,8 @@ const SingleCourse = (props) => {
                         <div className="badge badge-secondary  badge-outline">{course.assessments}</div>
                         </div>
                         <div className="col-span-3 lg:col-span-3">
-                            <Link className="btn btn-outline rounded-full btn-success w-full">
-                                <i className="fa-regular fa-eye"></i> Book Details
+                            <Link className="btn btn-outline rounded-full btn-success w-full" to={ROUTES.SINGLE_COURSE.DYNAMIC(course.course_id)}>
+                                <i className="fa-regular fa-eye"></i> View Details
                             </Link>
                         </div>
                     </div>

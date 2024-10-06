@@ -3,10 +3,11 @@ import React, { useEffect } from 'react'
 import useSWR from 'swr';
 
 import SingleCourse from './shared/SingleCourse';
+import ROUTES from '../routes';
 
-const baseURL = 'http://localhost:3000';
 
-const fetcher = (url) => fetch(baseURL+url).then((res) => res.json());
+
+const fetcher = (url) => fetch(ROUTES.baseURL+url).then((res) => res.json());
 
 export const Course = () => {
     const { data, error, isLoading } = useSWR('/api/courses', fetcher);

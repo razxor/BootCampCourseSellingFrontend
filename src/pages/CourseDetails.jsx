@@ -1,72 +1,71 @@
-import React, { useEffect } from 'react'
-import { createBrowserRouter, useLocation, useParams } from 'react-router-dom';
-import books from '../../book.json'
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import Rating from 'react-rating';
+import useSWR from 'swr';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import ROUTES from '../routes';
+
+const fetcher = async (url) => {
+  try {
+    const response = await fetch(`${ROUTES.baseURL}${url}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch course data");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 
 export const CourseDetails = () => {
-  const { bookId } = useParams();
-  let book = books.find((item) => item.bookId == bookId)
+  const { id } = useParams();
+  const { data: course, error, isLoading } = useSWR(`/api/courses/${id}`, fetcher);
 
-  const handleClick = (book, msg) => {
-    toast.success(`${book.bookId} ${book.bookName} ${msg}`, { position: "bottom-right", });
-  }
+  if (isLoading) return <p>Loading course details...</p>;
+  if (error) return <p>Error loading course details: {error.message}</p>;
 
   return (
     <>
       <Helmet>
-        <title>Online Book Shop | {book.bookName}</title>
+        <title>Online Book Shop | {course?.title || "Course Details"}</title>
       </Helmet>
       <section id='bookDetails' className='w-4/5 mx-auto'>
         <div className='grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-8 py-12 gap-10'>
           <div className="col-span-1 lg:col-span-3">
             <figure>
               <img
-                src={`${book.image}`}
-                alt="car!" />
+                src={course?.img_url}
+                alt="course"
+              />
             </figure>
           </div>
           <div className="col-span-1 lg:col-span-5">
-            <h1 className='text-3xl sm:text-3xl lg:text-4xl font-bold'>{book.bookName}</h1>
+            <h1 className='text-3xl sm:text-3xl lg:text-4xl font-bold'>{course.title}</h1>
+            <p className='py-2 text-justify'>{course.details}</p>
             <div className='py-2'>
               <Rating
                 emptySymbol="far fa-star text-orange-500"
                 fullSymbol="fas fa-star text-orange-500"
                 fractions={2}
-                initialRating={book.rating}
+                initialRating={course.ratings.split('/').shift() || 5}
                 readonly
-              //onChange={(rate) => console.log(rate)}
               />
-              <p>
-                {book.review}
-              </p>
+              <p>{course.review}</p>
             </div>
             <div className='py-2'>
-              <h1 className='py-1'><strong>Author:</strong> {book.author}</h1>
-              <h1 className='py-1'><strong>Publisher:</strong> {book.publisher}</h1>
-              <h1 className='py-1'><strong>Category:</strong> {book.category}</h1>
-              <h1 className='py-1'><strong>Total Pages:</strong> {book.totalPages}</h1>
-              <h1 className='py-1'><strong>Year of Publishing:</strong> {book.yearOfPublishing}</h1>
-            </div>
-
-            <div className='py-2 flex gap-2'>
-              {
-                book.tags.map((tag, i) => {
-                  return (
-                    <div className="badge badge-secondary  badge-outline" key={i}>{tag}</div>
-                  )
-                })
-              }
-            </div>
-
-            <div className='flex flex-col sm:flex-col md:flex-row gap-2  pt-3 '>
-              <button className='btn btn-warning rounded w-full sm:w-full md:w-1/2' onClick={() => handleClick(book, "has been added to the Wishlist")}>Wish to Read</button>
-              <button className='btn btn-error rounded w-full sm:w-full md:w-1/2' onClick={() => handleClick(book, "has been added to the Cart")}>Add to Cart</button>
+              <h1 className='py-1'><strong>Level:</strong> {course.level}</h1>
+              <h1 className='py-1'><strong>Lessons:</strong> {course.lessons}</h1>
+              <h1 className='py-1'><strong>Students:</strong> {course.students}</h1>
+              <h1 className='py-1'><strong>Duration:</strong> {course.duration}</h1>
+              <h1 className='py-1'><strong>Price:</strong> {course.price}</h1>
+              <h1 className='py-1'><strong>Assessments:</strong> {course.assessments}</h1>
+              <h1 className='py-1'><strong>Author:</strong> {course.author}</h1>
             </div>
           </div>
         </div>
       </section>
     </>
-  )
-}
+  );
+};

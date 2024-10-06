@@ -1,4 +1,6 @@
 export const ROUTES = {
+    baseURL : 'http://localhost:3000',
+
     LOGIN: "/login",
     REGISTER: "/signup",
     HOME: "/",
@@ -6,9 +8,9 @@ export const ROUTES = {
     ABOUT: "/about",
     BLOG: "/blog",
     FAQ: "/faq",
-    SINGLE_BOOK:{
-        STATIC: "/book/:bookId",
-        DYNAMIC: (bookId)=>`/book/${bookId}`,
+    SINGLE_COURSE:{
+        STATIC: "/course/:id",
+        DYNAMIC: (id)=>`/course/${id}`,
     }
 };
 

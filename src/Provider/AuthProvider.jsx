@@ -4,9 +4,9 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     getAuth,
-    GoogleAuthProvider,
-    GithubAuthProvider,
     onAuthStateChanged,
+    GoogleAuthProvider,
+    GithubAuthProvider,   
     signInWithPopup,
     signOut,
 } from "firebase/auth";

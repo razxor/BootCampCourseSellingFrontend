@@ -31,8 +31,19 @@ const Register = () => {
                 navigate(ROUTES.HOME);
             })
             .catch((error) => {
-                console.log('serror', error);
-                setSerror(error.message);
+                if (error.code === "auth/account-exists-with-different-credential") {
+                    firebaseAuth.fetchSignInMethodsForEmail(email).then((methods) => {
+                        if (methods.includes("google.com")) {
+                            setSerror("An account with this email already exists with Google. Please log in with Google.");
+                        } else if (methods.includes("facebook.com")) {
+                            setSerror("An account with this email already exists with Facebook. Please log in with Facebook.");
+                        } else {
+                            setSerror("An account with this email exists under a different method. Please use the same method to log in.");
+                        }
+                    });
+                } else {
+                    setSerror(error.message); // Handle other errors
+                }
             });
     };
 
