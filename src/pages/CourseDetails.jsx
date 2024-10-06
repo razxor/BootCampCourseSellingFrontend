@@ -5,7 +5,7 @@ import Rating from 'react-rating';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
-export const BookDetails = () => {
+export const CourseDetails = () => {
   const { bookId } = useParams();
   let book = books.find((item) => item.bookId == bookId)
 

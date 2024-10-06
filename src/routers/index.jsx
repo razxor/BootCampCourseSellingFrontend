@@ -3,11 +3,15 @@ import { createBrowserRouter } from 'react-router-dom'
 import Home from '../pages/Home';
 import ROUTES from '../routes/index'
 import MasterLayout from '../layouts/MasterLayout';
-import { BookDetails } from '../pages/BookDetails';
-import { About } from '../pages/About';
-import { Blog } from '../pages/Blog';
-import { Faq } from '../pages/Faq';
-import NotFound from '../pages/NotFound'; 
+import { CourseDetails } from '../pages/CourseDetails';
+// import { About } from '../pages/About';
+// import { Blog } from '../pages/Blog';
+// import { Faq } from '../pages/Faq';
+import NotFound from '../pages/NotFound';
+import { Course } from '../components/Course';
+import { Login } from '../pages/Auth/Login';
+import PrivateRoute from './PrivateRoute';
+import Register from '../pages/Auth/Register';
 
 const router = createBrowserRouter([
     {
@@ -15,24 +19,41 @@ const router = createBrowserRouter([
         element: <MasterLayout />,
         children: [
             {
+                path: `${ROUTES.LOGIN}`,
+                element: <Login />,
+            },
+            {
+                path: `${ROUTES.REGISTER}`,
+                element: <Register />,
+            },
+            {
                 path: `${ROUTES.HOME}`,
                 element: <Home />,
             },
             {
-                path: `${ROUTES.ABOUT}`,
-                element: <About />,
+                path: `${ROUTES.COURSES}`,
+                element:
+                    (
+                        <PrivateRoute>
+                            <Course />,
+                        </PrivateRoute>
+                    )
             },
-            {
-                path: `${ROUTES.BLOG}`,
-                element: <Blog />,
-            },
-            {
-                path: `${ROUTES.FAQ}`,
-                element: <Faq />,
-            },
+            // {
+            //     path: `${ROUTES.ABOUT}`,
+            //     element: <About />,
+            // },
+            // {
+            //     path: `${ROUTES.BLOG}`,
+            //     element: <Blog />,
+            // },
+            // {
+            //     path: `${ROUTES.FAQ}`,
+            //     element: <Faq />,
+            // },
             {
                 path: `${ROUTES.SINGLE_BOOK.STATIC}`,
-                element: <BookDetails />,
+                element: <CourseDetails />,
             },
             {
                 path: '*',              //Wildcard route for handling 404
