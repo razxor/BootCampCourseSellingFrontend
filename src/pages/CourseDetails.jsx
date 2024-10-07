@@ -37,6 +37,7 @@ export const CourseDetails = () => {
             <figure>
               <img
                 src={course?.img_url}
+                className='rounded'
                 alt="course"
               />
             </figure>

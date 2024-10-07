@@ -66,8 +66,8 @@ const Register = () => {
                             <p className="pr-3 text-justify">This is an online selling site is a digital platform where businesses or individuals can showcase and sell products or services to a wide audience via the internet. It includes features like product listings, secure payment processing, and order management, allowing customers to browse, purchase, and receive items conveniently from anywhere.</p>
                         </div>
                     </div>
-                    <div className="flex justify-center self-center ">
-                        <div className="p-12 bg-white mx-auto rounded-2xl w-100  z-10">
+                    <div className="flex justify-center self-center px-4 sm:px-4 md:px-0 py-4">
+                        <div className="p-6 sm:p-6 md:p-12 bg-white mx-auto rounded-2xl w-100  z-10">
                             <div className="mb-6 text-center">
                                 <h3 className="font-semibold text-2xl text-gray-800 py-2">Register your account</h3>
                                 {
