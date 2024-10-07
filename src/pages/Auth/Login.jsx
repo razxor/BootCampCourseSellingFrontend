@@ -14,11 +14,11 @@ export const Login = () => {
         event.preventDefault();
 
         const form = new FormData(event.currentTarget);
-        console.log(form);
+        //console.log(form);
 
         const email = form.get("email");
         const password = form.get("password");
-        console.log(email, password);
+        //console.log(email, password);
 
         signIn(email, password)
             .then((result) => {
@@ -26,7 +26,7 @@ export const Login = () => {
                 toast.success("User Login Successful", {
                     position: "top-right",
                 });
-                navigate(location?.state ? location.state : ROUTES.HOME);
+                navigate(location?.state ? location.state : ROUTES.COURSES);
             })
             .catch((error) => {
                 console.log(error);
@@ -37,7 +37,7 @@ export const Login = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then((res) => {
-                navigate(ROUTES.HOME);
+                navigate(ROUTES.COURSES);
             })
             .catch((error) => {
                 console.log('error');
@@ -52,7 +52,7 @@ export const Login = () => {
                 toast.success("User GitHub Login Successful", {
                     position: "top-right",
                 });
-                navigate(location?.state ? location.state : ROUTES.HOME);
+                navigate(location?.state ? location.state : ROUTES.COURSES);
             })
             .catch((error) => {
                 if (error.code === "auth/account-exists-with-different-credential") {

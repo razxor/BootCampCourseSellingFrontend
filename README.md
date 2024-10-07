@@ -36,4 +36,4 @@ A web application for browsing and purchasing books, built using **React.js**.
 
 ## Live Demo
 
-Visit the live version of the application [here](https://bootcamp-react-bookshop.vercel.app/).
+Visit the live version of the application [here](https://boot-camp-course-selling-frontend.vercel.app/).
