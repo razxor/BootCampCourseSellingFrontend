@@ -70,11 +70,9 @@ export const Login = () => {
                 <div className="absolute bg-gradient-to-b from-green-500 to-green-400 opacity-75 inset-0 z-0"></div>
                 <div className="min-h-screen sm:flex sm:flex-row mx-0 justify-center">
                     <div className="flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10">
-                        <div className="self-start hidden lg:flex flex-col  text-white">
-                            <img src="" className="mb-3" />
-                            <h1 className="mb-3 font-bold text-5xl">Hi ? Welcome Back Aji </h1>
-                            <p className="pr-3">Lorem ipsum is placeholder text commonly used in the graphic, print,
-                                and publishing industries for previewing layouts and visual mockups</p>
+                        <div className="self-start hidden lg:flex flex-col  text-white">                            
+                            <h1 className="mb-3 font-bold text-5xl">Hi! Welcome Back </h1>
+                            <p className="pr-3 text-justify">This is an online selling site is a digital platform where businesses or individuals can showcase and sell products or services to a wide audience via the internet. It includes features like product listings, secure payment processing, and order management, allowing customers to browse, purchase, and receive items conveniently from anywhere.</p>
                         </div>
                     </div>
                     <div className="flex justify-center self-center ">
