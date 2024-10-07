@@ -1,6 +1,4 @@
-export const ROUTES = {
-    baseURL : 'http://localhost:3000',
-
+export const ROUTES = {    
     LOGIN: "/login",
     REGISTER: "/signup",
     HOME: "/",

@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import ROUTES from '../../routes';
 
 const SingleCourse = (props) => {    
-    const {course} = props;      
+    const {course} = props;          
     return (
-
         <Link to={ROUTES.SINGLE_COURSE.DYNAMIC(course.course_id)}>        
             <div className="card bg-base-100 shadow-xl w-full rounded h-96">
                 <figure>
@@ -17,11 +16,12 @@ const SingleCourse = (props) => {
                 <div className="card-body p-3">
                     <div className="grid grid-cols-5 sm:grid-cols-5 lg:grid-cols-3 justify-center">
                         <div className="col-span-3 sm:col-span-3 lg:col-span-2">
-                            <h2 className="card-title">
+                            <h3 className="card-title text-sm py-2">
                                 {course.title}
-                            </h2>
-                            <p>
-                                <i className="fa-solid fa-user-tie"></i> {course.author}
+                            </h3>
+                            <p className='flex gap-2 items-center'>
+                                <img src={course.author_img_url} className='h-10 w-10 rounded-full'/> 
+                                {course.author}
                             </p>
                         </div>
                         <div className="col-span-2 sm:col-span-2 lg:col-span-1 text-end flex flex-col justify-center items-end">
@@ -39,7 +39,11 @@ const SingleCourse = (props) => {
 
                     <div className="grid grid-cols-3 justify-between items-center gap-5">
                         <div className="col-span-3 lg:col-span-3 flex gap-2">
+                        <div className="badge badge-success  badge-outline font-bold">${course.price}</div>
                         <div className="badge badge-secondary  badge-outline">{course.assessments}</div>
+                        <div className="badge badge-primary  badge-outline">{course.lession}</div>                        
+                        <div className="badge badge-warning  badge-outline">{course.duration}</div>                        
+                        <div className="badge badge-error  badge-outline">{course.student}</div>                        
                         </div>
                         <div className="col-span-3 lg:col-span-3">
                             <Link className="btn btn-outline rounded-full btn-success w-full" to={ROUTES.SINGLE_COURSE.DYNAMIC(course.course_id)}>

@@ -38,9 +38,11 @@ const Header = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         <li className={`${pathname == ROUTES.HOME && 'text-orange-500'}`}><Link to={ROUTES.HOME}>Home</Link></li>
-                        <li className={`${pathname == ROUTES.ABOUT && 'text-orange-500'}`}><Link to={ROUTES.ABOUT}>About</Link></li>
-                        <li className={`${pathname == ROUTES.BLOG && 'text-orange-500'}`}><Link to={ROUTES.BLOG}>Blog</Link></li>
-                        <li className={`${pathname == ROUTES.FAQ && 'text-orange-500'}`}><Link to={ROUTES.FAQ}>FAQ</Link></li>
+                        <li className={`${pathname == ROUTES.COURSES && 'text-orange-500'}`}>                            
+                            <Link to={ROUTES.COURSES}>Courses</Link>
+                        </li>
+                        {/* <li className={`${pathname == ROUTES.BLOG && 'text-orange-500'}`}><Link to={ROUTES.BLOG}>Blog</Link></li>
+                        <li className={`${pathname == ROUTES.FAQ && 'text-orange-500'}`}><Link to={ROUTES.FAQ}>FAQ</Link></li> */}
                     </ul>
                 </div>
                 <Link className="text-6xl font-bold" to={ROUTES.HOME}>

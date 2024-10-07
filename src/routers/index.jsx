@@ -39,6 +39,15 @@ const router = createBrowserRouter([
                         </PrivateRoute>
                     )
             },
+            {
+                path: `${ROUTES.SINGLE_COURSE.STATIC}`,
+                element:
+                    (
+                        <PrivateRoute>
+                            <CourseDetails />,
+                        </PrivateRoute>
+                    )
+            },
             // {
             //     path: `${ROUTES.ABOUT}`,
             //     element: <About />,
@@ -51,10 +60,7 @@ const router = createBrowserRouter([
             //     path: `${ROUTES.FAQ}`,
             //     element: <Faq />,
             // },
-            {
-                path: `${ROUTES.SINGLE_COURSE.STATIC}`,
-                element: <CourseDetails />,
-            },
+
             {
                 path: '*',              //Wildcard route for handling 404
                 element: <NotFound />, // Render the NotFound page for undefined routes

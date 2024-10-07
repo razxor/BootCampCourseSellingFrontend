@@ -43,7 +43,7 @@ const ContactUs = () => {
 
                     {/* Submit Button */}
                     <div className="text-center">
-                        <button type="submit" className="btn btn-primary w-full">
+                        <button type="submit" className="btn btn-success text-white w-full">
                             Submit
                         </button>
                     </div>

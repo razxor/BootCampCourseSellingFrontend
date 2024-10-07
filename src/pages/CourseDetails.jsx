@@ -4,11 +4,11 @@ import Rating from 'react-rating';
 import useSWR from 'swr';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
-import ROUTES from '../routes';
+import Loader from '../components/Loader';
 
 const fetcher = async (url) => {
   try {
-    const response = await fetch(`${ROUTES.baseURL}${url}`);
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}${url}`);
     if (!response.ok) {
       throw new Error("Failed to fetch course data");
     }
@@ -23,7 +23,7 @@ export const CourseDetails = () => {
   const { id } = useParams();
   const { data: course, error, isLoading } = useSWR(`/api/courses/${id}`, fetcher);
 
-  if (isLoading) return <p>Loading course details...</p>;
+  if (isLoading) return <Loader />;
   if (error) return <p>Error loading course details: {error.message}</p>;
 
   return (
