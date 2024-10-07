@@ -9,9 +9,9 @@ import { About } from "./About";
 const Home = () => {
     return (
         <>
-            <Hero />            
-            <HIW />
+            <Hero />                        
             <ProductImages />
+            <HIW />
             <ContactUs />
             <AboutUs />
         </>

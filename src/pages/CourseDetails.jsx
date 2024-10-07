@@ -32,7 +32,7 @@ export const CourseDetails = () => {
         <title>Online Book Shop | {course?.title || "Course Details"}</title>
       </Helmet>
       <section id='bookDetails' className='w-4/5 mx-auto'>
-        <div className='grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-8 py-12 gap-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-8 pt-12 gap-10'>
           <div className="col-span-1 lg:col-span-3">
             <figure>
               <img
@@ -54,15 +54,20 @@ export const CourseDetails = () => {
               />
               <p>{course.review}</p>
             </div>
-            <div className='py-2'>
-              <h1 className='py-1'><strong>Level:</strong> {course.level}</h1>
-              <h1 className='py-1'><strong>Lessons:</strong> {course.lessons}</h1>
-              <h1 className='py-1'><strong>Students:</strong> {course.students}</h1>
-              <h1 className='py-1'><strong>Duration:</strong> {course.duration}</h1>
-              <h1 className='py-1'><strong>Price:</strong> {course.price}</h1>
-              <h1 className='py-1'><strong>Assessments:</strong> {course.assessments}</h1>
-              <h1 className='py-1'><strong>Author:</strong> {course.author}</h1>
+            <div className='py-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5'>
+              <h1><strong>Level:</strong> {course.level}</h1>
+              <h1><strong>Lessons:</strong> {course.lessons}</h1>
+              <h1><strong>Students:</strong> {course.students}</h1>
+              <h1><strong>Duration:</strong> {course.duration}</h1>
+              <h1><strong>Price:</strong> {course.price}</h1>
+              <h1><strong>Assessments:</strong> {course.assessments}</h1>                            
             </div>
+            <div className="avatar mb-6 md:mb-0 md:mr-8 flex-shrink-0 items-center gap-2 mt-4">
+                <div className="h-10 rounded">
+                  <img src="../../images/raz.png" alt="Owner's Image" />                  
+                </div>
+                <h1 className='py-1'><strong>{course.author}</strong> </h1>
+              </div>
           </div>
         </div>
       </section>

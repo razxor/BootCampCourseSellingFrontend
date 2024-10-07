@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 
-import useSWR from 'swr';
 
 import SingleCourse from './shared/SingleCourse';
 import Loader from '../components/Loader';
+import useSWR from 'swr';
 
 
 const fetcher = (url) => fetch(import.meta.env.VITE_BASE_URL + url).then((res) => res.json());
@@ -11,7 +11,7 @@ const fetcher = (url) => fetch(import.meta.env.VITE_BASE_URL + url).then((res) =
 export const Course = () => {
     const { data, error, isLoading } = useSWR('/api/courses', fetcher);
     if (isLoading) return <Loader />;
-    if (error) return <p>Error loading courses: {error.message}</p>;
+    if (error) return <p>Error loading course: {error.message}</p>;
     // useEffect(()=>{
     //     const 
     // }, [])
